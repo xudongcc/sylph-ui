@@ -7,7 +7,7 @@ import {
 } from "@repo/contextual-save-bar";
 
 const Example = () => (
-  <ContextualSaveBar fullWidth relative>
+  <ContextualSaveBar absolute fullWidth>
     <ContextualSaveBarMessage>Unsaved changes</ContextualSaveBarMessage>
     <ContextualSaveBarActions>
       <ContextualSaveBarDiscard>Discard</ContextualSaveBarDiscard>

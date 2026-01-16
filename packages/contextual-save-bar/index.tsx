@@ -16,15 +16,15 @@ const contextualSaveBarVariants = tv({
         content: "max-w-full",
       },
     },
-    relative: {
+    absolute: {
       true: {
-        base: "relative w-full",
+        base: "absolute w-full",
       },
     },
   },
   defaultVariants: {
     fullWidth: false,
-    relative: false,
+    absolute: false,
   },
 });
 
