@@ -12,8 +12,9 @@
     "format": "biome format --write"
   },
   "dependencies": {
-    "@repo/shadcn-ui": "workspace:*",
+    "@repo/contextual-save-bar": "workspace:*",
     "@repo/badge": "workspace:*",
+    "@repo/shadcn-ui": "workspace:*",
     "@vercel/analytics": "^1.6.1",
     "fumadocs-core": "16.4.7",
     "fumadocs-mdx": "14.2.5",

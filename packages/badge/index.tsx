@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps } from "react";
+import type { ComponentProps, FC } from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 
 export const badgeVariants = tv({
@@ -21,8 +21,8 @@ export const badgeVariants = tv({
 
 export type BadgeVariantProps = VariantProps<typeof badgeVariants>;
 
-export interface BadgeProps extends ComponentProps<"div">, BadgeVariantProps {}
+export interface BadgeProps extends ComponentProps<"span">, BadgeVariantProps {}
 
-export const Badge = ({ className, variant, ...props }: BadgeProps) => (
-  <div className={badgeVariants({ variant, className })} {...props} />
+export const Badge: FC<BadgeProps> = ({ className, variant, ...props }) => (
+  <span className={badgeVariants({ variant, className })} {...props} />
 );
