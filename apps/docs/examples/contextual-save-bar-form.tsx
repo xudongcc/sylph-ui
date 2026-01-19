@@ -74,10 +74,10 @@ const Example = () => {
               <Label htmlFor={field.name}>Name</Label>
               <Input
                 id={field.name}
-                onBlur={field.handleBlur}
-                onChange={(e) => field.handleChange(e.target.value)}
                 placeholder="Enter your name"
                 value={field.state.value}
+                onBlur={field.handleBlur}
+                onChange={(e) => field.handleChange(e.target.value)}
               />
             </div>
           )}

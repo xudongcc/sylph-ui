@@ -77,7 +77,7 @@ export const Preview = async ({
     <div
       className={cn(
         "bg-background size-full overflow-hidden rounded-lg border",
-        type === "block" && "h-192 prose-code:border-none prose-code:p-0",
+        type === "block" && "prose-code:border-none prose-code:p-0 h-192",
         type === "component" && "not-prose h-128",
         className,
       )}
@@ -114,11 +114,11 @@ export const Preview = async ({
           <PreviewCode code={parsedCode} filename="index.tsx" language="tsx" />
         </TabsContent>
         <TabsContent
+          value="preview"
           className={cn(
             "not-fumadocs-codeblock size-full",
             type === "component" ? "overflow-hidden" : "overflow-auto",
           )}
-          value="preview"
         >
           <PreviewContent type={type}>
             {type === "block" ? (

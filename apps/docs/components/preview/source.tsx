@@ -39,6 +39,7 @@ export const PreviewSource = ({ source }: PreviewSourceProps) => (
         >
           <CodeBlock
             className="overflow-visible rounded-none border-none"
+            defaultValue="tsx"
             data={[
               {
                 language: "tsx",
@@ -46,10 +47,9 @@ export const PreviewSource = ({ source }: PreviewSourceProps) => (
                 code: parseCode(source),
               },
             ]}
-            defaultValue="tsx"
           >
-            <div className="z-1 sticky top-0">
-              <CodeBlockCopyButton className="absolute right-1.5 top-1" />
+            <div className="sticky top-0 z-1">
+              <CodeBlockCopyButton className="absolute top-1 right-1.5" />
             </div>
             <CodeBlockBody>
               {(item) => (

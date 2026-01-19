@@ -15,19 +15,19 @@ export const PreviewContent = ({ children, type }: PreviewContentProps) => {
   return (
     <ResizablePanelGroup className="size-full" direction="horizontal">
       <ResizablePanel
+        defaultSize={100}
+        maxSize={100}
+        minSize={40}
         className={cn(
           "not-fumadocs-codeblock peer size-full",
           type === "component" ? "overflow-hidden!" : "overflow-auto!",
         )}
-        defaultSize={100}
-        maxSize={100}
-        minSize={40}
       >
         {children}
       </ResizablePanel>
       <ResizableHandle
-        className="peer-data-[panel-size=100.0]:w-0"
         withHandle
+        className="peer-data-[panel-size=100.0]:w-0"
       />
       <ResizablePanel
         className="bg-background border-none"

@@ -54,6 +54,8 @@ export function LLMCopyButton({
 
   return (
     <button
+      disabled={isLoading}
+      type="button"
       className={cn(
         buttonVariants({
           color: "secondary",
@@ -61,9 +63,7 @@ export function LLMCopyButton({
           className: "[&_svg]:text-fd-muted-foreground gap-2 [&_svg]:size-3.5",
         }),
       )}
-      disabled={isLoading}
       onClick={onClick}
-      type="button"
     >
       {checked ? <Check /> : <Copy />}
       Copy Markdown
@@ -229,9 +229,9 @@ export function ViewOptions({
       <PopoverContent className="flex flex-col">
         {items.map((item) => (
           <a
+            key={item.href}
             className="hover:bg-fd-accent hover:text-fd-accent-foreground inline-flex items-center gap-2 rounded-lg p-2 text-sm [&_svg]:size-4"
             href={item.href}
-            key={item.href}
             rel="noreferrer noopener"
             target="_blank"
           >

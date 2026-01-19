@@ -1,5 +1,7 @@
 import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
+import react from "eslint-plugin-react";
+import reactHooks from "eslint-plugin-react-hooks";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
 import { dirname } from "path";
 import tseslint from "typescript-eslint";
@@ -31,6 +33,9 @@ const eslintConfig = [
   ...tseslint.configs.recommended,
   ...compat.extends("turbo"),
   ...compat.extends("prettier"),
+  react.configs.flat.recommended,
+  react.configs.flat["jsx-runtime"],
+  reactHooks.configs.flat.recommended,
   {
     plugins: {
       "simple-import-sort": simpleImportSort,
@@ -43,10 +48,24 @@ const eslintConfig = [
       ],
       "simple-import-sort/imports": "error",
       "simple-import-sort/exports": "error",
+      "react/jsx-sort-props": [
+        "error",
+        {
+          callbacksLast: true,
+          shorthandFirst: true,
+          ignoreCase: true,
+          reservedFirst: true,
+          noSortAlphabetically: false,
+          multiline: "last",
+        }
+      ],
     },
     settings: {
       next: {
         rootDir: ["apps/*/"],
+      },
+      react: {
+        version: "detect",
       },
     },
   },

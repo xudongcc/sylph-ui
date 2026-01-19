@@ -59,11 +59,11 @@ export const Page: FC<PageProps> = ({
           {/* Desktop: Show secondary action buttons */}
           {secondaryActions?.map((action, index) => (
             <Button
+              key={action.key ?? index}
               className="hidden md:inline-flex"
               disabled={action.disabled}
-              key={action.key ?? index}
-              onClick={action.onAction}
               variant="outline"
+              onClick={action.onAction}
             >
               {action.content}
             </Button>
@@ -81,8 +81,8 @@ export const Page: FC<PageProps> = ({
               <DropdownMenuContent align="end">
                 {secondaryActions.map((action, index) => (
                   <DropdownMenuItem
-                    disabled={action.disabled}
                     key={action.key ?? index}
+                    disabled={action.disabled}
                     onClick={action.onAction}
                   >
                     {action.content}
@@ -96,8 +96,8 @@ export const Page: FC<PageProps> = ({
           {primaryAction && (
             <Button
               disabled={primaryAction.disabled}
-              onClick={primaryAction.onAction}
               variant="default"
+              onClick={primaryAction.onAction}
             >
               {primaryAction.content}
             </Button>
