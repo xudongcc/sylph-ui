@@ -1,7 +1,7 @@
 "use client";
 
 import { MoreHorizontal } from "lucide-react";
-import type { FC, Key, ReactElement, ReactNode } from "react";
+import type { FC, Key, ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -25,7 +25,6 @@ export interface PageProps {
   primaryAction?: PageActionProps;
   secondaryActions?: PageActionProps[];
   fullWidth?: boolean;
-  breadcrumbs?: ReactElement[];
 }
 
 export const Page: FC<PageProps> = ({
