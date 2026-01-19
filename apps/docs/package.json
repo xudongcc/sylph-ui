@@ -14,6 +14,7 @@
   "dependencies": {
     "@repo/badge": "workspace:*",
     "@repo/contextual-save-bar": "workspace:*",
+    "@repo/page": "workspace:*",
     "@repo/shadcn-ui": "workspace:*",
     "@tanstack/react-form": "^1.27.7",
     "@vercel/analytics": "^1.6.1",

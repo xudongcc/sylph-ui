@@ -1,0 +1,63 @@
+---
+title: Page
+description: A layout component for building consistent page structures with title, description, and actions.
+---
+
+<Preview path="page" />
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add @sylph-ui/page
+```
+
+## Usage
+
+```tsx
+import { Page } from "@/components/sylph-ui/page";
+```
+
+```tsx
+<Page
+  title="Products"
+  description="Manage your products and inventory."
+>
+  {/* Page content */}
+</Page>
+```
+
+## Examples
+
+### With Actions
+
+Use `primaryAction` and `secondaryActions` to add action buttons to the page header.
+
+<Preview path="page-with-actions" />
+
+### Full Width
+
+Use the `fullWidth` prop to remove the default max-width constraint.
+
+<Preview path="page-full-width" />
+
+## API Reference
+
+### Page
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| title | `ReactNode` | - | The page title displayed in the header |
+| description | `ReactNode` | - | Optional description text below the title |
+| primaryAction | `PageActionProps` | - | Primary action button, always visible on both mobile and desktop |
+| secondaryActions | `PageActionProps[]` | - | Secondary action buttons. On desktop, displayed as outline buttons. On mobile, collapsed into a dropdown menu |
+| fullWidth | `boolean` | `false` | Removes the default max-width constraint |
+| children | `ReactNode` | - | Page content |
+
+### PageActionProps
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| key | `Key` | - | Optional unique key for the action |
+| content | `ReactNode` | - | The button content |
+| disabled | `boolean` | `false` | Whether the button is disabled |
+| onAction | `() => Promise<void> \| void` | - | Callback when the button is clicked |
