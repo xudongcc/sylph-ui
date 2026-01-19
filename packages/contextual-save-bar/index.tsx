@@ -1,80 +1,71 @@
 "use client";
 
+import { cva, type VariantProps } from "class-variance-authority";
 import type { ComponentProps, FC, PropsWithChildren } from "react";
-import type { VariantProps } from "tailwind-variants";
-import { tv } from "tailwind-variants";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
-const contextualSaveBarVariants = tv({
-  slots: {
-    base: "fixed top-0 right-0 left-0 z-50 h-16 border-b bg-background text-foreground md:left-(--sidebar-width) md:group-has-data-[collapsible=icon]/sidebar-wrapper:left-(--sidebar-width-icon)",
-    content: "mx-auto flex size-full max-w-5xl items-center justify-end px-4",
-  },
-  variants: {
-    fullWidth: {
-      true: {
-        content: "max-w-full",
+const contextualSaveBarBaseVariants = cva(
+  "fixed top-0 right-0 left-0 z-50 h-16 border-b bg-background text-foreground md:left-(--sidebar-width) md:group-has-data-[collapsible=icon]/sidebar-wrapper:left-(--sidebar-width-icon)",
+  {
+    variants: {
+      absolute: {
+        true: "absolute w-full",
       },
     },
-    absolute: {
-      true: {
-        base: "absolute w-full",
+    defaultVariants: {
+      absolute: false,
+    },
+  }
+);
+
+const contextualSaveBarContentVariants = cva(
+  "mx-auto flex size-full max-w-5xl items-center justify-end px-4",
+  {
+    variants: {
+      fullWidth: {
+        true: "max-w-full",
       },
     },
-  },
-  defaultVariants: {
-    fullWidth: false,
-    absolute: false,
-  },
-});
+    defaultVariants: {
+      fullWidth: false,
+    },
+  }
+);
 
 export type ContextualSaveBarProps = PropsWithChildren<
-  VariantProps<typeof contextualSaveBarVariants>
+  VariantProps<typeof contextualSaveBarBaseVariants> &
+    VariantProps<typeof contextualSaveBarContentVariants>
 >;
 
-export const ContextualSaveBar: FC<ContextualSaveBarProps> = (props) => {
-  const { base, content } = contextualSaveBarVariants(props);
+export const ContextualSaveBar: FC<ContextualSaveBarProps> = ({
+  absolute,
+  fullWidth,
+  children,
+}) => {
   return (
-    <div className={base()}>
-      <div className={content()}>{props.children}</div>
+    <div className={cn(contextualSaveBarBaseVariants({ absolute }))}>
+      <div className={cn(contextualSaveBarContentVariants({ fullWidth }))}>
+        {children}
+      </div>
     </div>
   );
 };
 
-const contextualSaveBarMessageVariants = tv({
-  base: "flex-1",
-});
+export type ContextualSaveBarMessageProps = PropsWithChildren;
 
-export type ContextualSaveBarMessageProps = PropsWithChildren<
-  VariantProps<typeof contextualSaveBarMessageVariants>
->;
-
-export const ContextualSaveBarMessage: FC<ContextualSaveBarMessageProps> = (
-  props
-) => {
-  return (
-    <div className={contextualSaveBarMessageVariants(props)}>
-      {props.children}
-    </div>
-  );
+export const ContextualSaveBarMessage: FC<ContextualSaveBarMessageProps> = ({
+  children,
+}) => {
+  return <div className="flex-1">{children}</div>;
 };
 
-export const contextualSaveBarActionsVariants = tv({
-  base: "flex gap-2",
-});
+export type ContextualSaveBarActionsProps = PropsWithChildren;
 
-export type ContextualSaveBarActionsProps = PropsWithChildren<
-  VariantProps<typeof contextualSaveBarActionsVariants>
->;
-
-export const ContextualSaveBarActions: FC<ContextualSaveBarActionsProps> = (
-  props
-) => {
-  return (
-    <div className={contextualSaveBarActionsVariants(props)}>
-      {props.children}
-    </div>
-  );
+export const ContextualSaveBarActions: FC<ContextualSaveBarActionsProps> = ({
+  children,
+}) => {
+  return <div className="flex gap-2">{children}</div>;
 };
 
 export type ContextualSaveBarDiscardProps = ComponentProps<typeof Button>;
