@@ -2,6 +2,7 @@
 
 import { MoreHorizontal } from "lucide-react";
 import type { FC, Key, ReactNode } from "react";
+
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -41,12 +42,12 @@ export const Page: FC<PageProps> = ({
     <div
       className={cn(
         "mx-auto flex min-h-min w-full max-w-5xl flex-1 flex-col p-4",
-        fullWidth && "max-w-full"
+        fullWidth && "max-w-full",
       )}
     >
       <header className="mb-4 flex items-center justify-between gap-2">
         <div>
-          <h2 className="flex h-9 items-center font-bold text-xl tracking-tight">
+          <h2 className="flex h-9 items-center text-xl font-bold tracking-tight">
             {title}
           </h2>
           {description && (

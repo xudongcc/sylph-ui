@@ -2,6 +2,7 @@
 
 import { cva, type VariantProps } from "class-variance-authority";
 import type { ComponentProps, FC } from "react";
+
 import { Badge as BaseBadge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 

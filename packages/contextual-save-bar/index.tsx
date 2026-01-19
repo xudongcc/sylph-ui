@@ -2,6 +2,7 @@
 
 import { cva, type VariantProps } from "class-variance-authority";
 import type { ComponentProps, FC, PropsWithChildren } from "react";
+
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -16,7 +17,7 @@ const contextualSaveBarBaseVariants = cva(
     defaultVariants: {
       absolute: false,
     },
-  }
+  },
 );
 
 const contextualSaveBarContentVariants = cva(
@@ -30,7 +31,7 @@ const contextualSaveBarContentVariants = cva(
     defaultVariants: {
       fullWidth: false,
     },
-  }
+  },
 );
 
 export type ContextualSaveBarProps = PropsWithChildren<
@@ -71,7 +72,7 @@ export const ContextualSaveBarActions: FC<ContextualSaveBarActionsProps> = ({
 export type ContextualSaveBarDiscardProps = ComponentProps<typeof Button>;
 
 export const ContextualSaveBarDiscard: FC<ContextualSaveBarDiscardProps> = (
-  props
+  props,
 ) => {
   return (
     <Button variant="outline" {...props}>
@@ -83,7 +84,7 @@ export const ContextualSaveBarDiscard: FC<ContextualSaveBarDiscardProps> = (
 export type ContextualSaveBarSaveProps = ComponentProps<typeof Button>;
 
 export const ContextualSaveBarSave: FC<ContextualSaveBarSaveProps> = (
-  props
+  props,
 ) => {
   return (
     <Button variant="default" {...props}>

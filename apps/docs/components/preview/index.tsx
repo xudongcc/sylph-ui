@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
+
 import {
   Tabs,
   TabsContent,
@@ -8,6 +9,7 @@ import {
 } from "@repo/shadcn-ui/components/ui/tabs";
 import { cn } from "@repo/shadcn-ui/lib/utils";
 import { BoxIcon, CodeIcon, EyeIcon } from "lucide-react";
+
 import { PreviewCode } from "./code";
 import { PreviewContent } from "./content";
 import { PreviewRender } from "./render";
@@ -26,11 +28,11 @@ export const Preview = async ({
 }: PreviewProps) => {
   const code = await readFile(
     join(process.cwd(), "examples", `${path}.tsx`),
-    "utf-8"
+    "utf-8",
   );
 
   const Component = await import(`../../examples/${path}.tsx`).then(
-    (module) => module.default
+    (module) => module.default,
   );
 
   const parsedCode = code
@@ -40,7 +42,7 @@ export const Preview = async ({
     // Remove typography import
     .replace(
       /^import\s+["']@\/components\/ui\/sylph-ui\/typography["'];?\n?/gm,
-      ""
+      "",
     );
 
   const sourceComponentNames =
@@ -58,7 +60,7 @@ export const Preview = async ({
     try {
       const source = await readFile(
         join(process.cwd(), "..", "..", "packages", fileName),
-        "utf-8"
+        "utf-8",
       );
 
       if (sourceComponents.some((s) => s.name === component)) {
@@ -74,10 +76,10 @@ export const Preview = async ({
   return (
     <div
       className={cn(
-        "size-full overflow-hidden rounded-lg border bg-background",
+        "bg-background size-full overflow-hidden rounded-lg border",
         type === "block" && "h-192 prose-code:border-none prose-code:p-0",
         type === "component" && "not-prose h-128",
-        className
+        className,
       )}
     >
       <Tabs className="size-full gap-0" defaultValue="preview">
@@ -99,14 +101,14 @@ export const Preview = async ({
         </TabsList>
         {sourceComponents.length > 0 && (
           <TabsContent
-            className="not-prose size-full overflow-y-auto bg-background"
+            className="not-prose bg-background size-full overflow-y-auto"
             value="source"
           >
             <PreviewSource source={sourceComponents} />
           </TabsContent>
         )}
         <TabsContent
-          className="size-full overflow-y-auto bg-background"
+          className="bg-background size-full overflow-y-auto"
           value="code"
         >
           <PreviewCode code={parsedCode} filename="index.tsx" language="tsx" />
@@ -114,7 +116,7 @@ export const Preview = async ({
         <TabsContent
           className={cn(
             "not-fumadocs-codeblock size-full",
-            type === "component" ? "overflow-hidden" : "overflow-auto"
+            type === "component" ? "overflow-hidden" : "overflow-auto",
           )}
           value="preview"
         >

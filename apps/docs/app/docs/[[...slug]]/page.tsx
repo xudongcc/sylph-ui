@@ -7,6 +7,7 @@ import {
 import { createRelativeLink } from "fumadocs-ui/mdx";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+
 import { LLMCopyButton, ViewOptions } from "~/components/ai/page-actions";
 import { Preview } from "~/components/preview";
 import { getPageImage, source } from "~/lib/source";
@@ -58,7 +59,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(
-  props: PageProps<"/docs/[[...slug]]">
+  props: PageProps<"/docs/[[...slug]]">,
 ): Promise<Metadata> {
   const params = await props.params;
   const page = source.getPage(params.slug);

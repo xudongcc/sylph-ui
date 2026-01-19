@@ -31,8 +31,8 @@ export const PreviewCode = ({ code, language, filename }: PreviewCodeProps) => {
       data={data}
       defaultValue={data[0].language}
     >
-      <div className="sticky top-0 z-1">
-        <CodeBlockCopyButton className="absolute top-1 right-1.5" />
+      <div className="z-1 sticky top-0">
+        <CodeBlockCopyButton className="absolute right-1.5 top-1" />
       </div>
       <CodeBlockBody>
         {(item) => (

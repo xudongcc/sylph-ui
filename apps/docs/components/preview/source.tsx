@@ -27,7 +27,7 @@ export const PreviewSource = ({ source }: PreviewSourceProps) => (
   <Accordion collapsible defaultValue={source.at(0)?.name} type="single">
     {source.map(({ name, source }) => (
       <AccordionItem key={name} value={name}>
-        <AccordionTrigger className="rounded-none bg-secondary px-4">
+        <AccordionTrigger className="bg-secondary rounded-none px-4">
           <div className="flex items-center gap-2 text-sm">
             {/* <SiReact className="size-4 text-muted-foreground" /> */}
             <span>{name}</span>
@@ -48,8 +48,8 @@ export const PreviewSource = ({ source }: PreviewSourceProps) => (
             ]}
             defaultValue="tsx"
           >
-            <div className="sticky top-0 z-1">
-              <CodeBlockCopyButton className="absolute top-1 right-1.5" />
+            <div className="z-1 sticky top-0">
+              <CodeBlockCopyButton className="absolute right-1.5 top-1" />
             </div>
             <CodeBlockBody>
               {(item) => (

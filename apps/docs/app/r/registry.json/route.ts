@@ -1,8 +1,10 @@
 import { readdir } from "node:fs/promises";
 import { join } from "node:path";
+
 import { track } from "@vercel/analytics/server";
 import { type NextRequest, NextResponse } from "next/server";
 import type { Registry } from "shadcn/schema";
+
 import { getPackage } from "../../../lib/package";
 
 const filteredPackages = ["shadcn-ui", "tsconfig", "patterns"];

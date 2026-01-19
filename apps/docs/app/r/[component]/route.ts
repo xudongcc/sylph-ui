@@ -1,8 +1,10 @@
 import { readdir } from "node:fs/promises";
 import { join } from "node:path";
+
 import { track } from "@vercel/analytics/server";
 import { notFound } from "next/navigation";
 import { type NextRequest, NextResponse } from "next/server";
+
 import { getPackage } from "../../../lib/package";
 
 interface RegistryParams {
@@ -17,7 +19,7 @@ export const GET = async (_: NextRequest, { params }: RegistryParams) => {
   if (!component.endsWith(".json")) {
     return NextResponse.json(
       { error: "Component must end with .json" },
-      { status: 400 }
+      { status: 400 },
     );
   }
 
@@ -44,7 +46,7 @@ export const GET = async (_: NextRequest, { params }: RegistryParams) => {
   } catch (error) {
     return NextResponse.json(
       { error: "Failed to get package", details: error },
-      { status: 500 }
+      { status: 500 },
     );
   }
 };

@@ -1,6 +1,7 @@
 import { promises as fs, readdirSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
+
 import postcss from "postcss";
 import postcssNested from "postcss-nested";
 import type { RegistryItem } from "shadcn/schema";
@@ -11,14 +12,14 @@ export const getPackage = async (packageName: string) => {
   const packageJson = JSON.parse(await readFile(packagePath, "utf-8"));
 
   const kiboDependencies = Object.keys(packageJson.dependencies || {}).filter(
-    (dep) => dep.startsWith("@repo") && dep !== "@repo/shadcn-ui"
+    (dep) => dep.startsWith("@repo") && dep !== "@repo/shadcn-ui",
   );
 
   const dependencies = Object.keys(packageJson.dependencies || {}).filter(
     (dep) =>
       !["react", "react-dom", "@repo/shadcn-ui", ...kiboDependencies].includes(
-        dep
-      )
+        dep,
+      ),
   );
 
   const devDependencies = Object.keys(packageJson.devDependencies || {}).filter(
@@ -28,16 +29,16 @@ export const getPackage = async (packageName: string) => {
         "@types/react",
         "@types/react-dom",
         "typescript",
-      ].includes(dep)
+      ].includes(dep),
   );
 
   const packageFiles = readdirSync(packageDir, { withFileTypes: true });
   const tsxFiles = packageFiles.filter(
-    (file) => file.isFile() && file.name.endsWith(".tsx")
+    (file) => file.isFile() && file.name.endsWith(".tsx"),
   );
 
   const cssFiles = packageFiles.filter(
-    (file) => file.isFile() && file.name.endsWith(".css")
+    (file) => file.isFile() && file.name.endsWith(".css"),
   );
 
   const files: RegistryItem["files"] = [];
