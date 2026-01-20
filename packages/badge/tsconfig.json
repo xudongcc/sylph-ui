@@ -4,8 +4,10 @@
     "baseUrl": ".",
     "paths": {
       "@repo/*": ["../*"],
-      "@/components/*": ["../shadcn-ui/components/*"],
-      "@/lib/*": ["../shadcn-ui/lib/*"]
+      "@/components/*": ["../../packages/shadcn-ui/components/*"],
+      "@/utils/*": ["../../packages/shadcn-ui/utils/*"],
+      "@/lib/*": ["../../packages/shadcn-ui/lib/*"],
+      "@/hooks/*": ["../../packages/shadcn-ui/hooks/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx"],

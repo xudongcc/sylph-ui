@@ -19,7 +19,9 @@
       "~/*": ["./*"],
       "@repo/*": ["../../packages/*"],
       "@/components/*": ["../../packages/shadcn-ui/components/*"],
+      "@/utils/*": ["../../packages/shadcn-ui/utils/*"],
       "@/lib/*": ["../../packages/shadcn-ui/lib/*"],
+      "@/hooks/*": ["../../packages/shadcn-ui/hooks/*"],
       "fumadocs-mdx:collections/*": [".source/*"]
     },
     "plugins": [
