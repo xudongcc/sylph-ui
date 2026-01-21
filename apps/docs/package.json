@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@repo/badge": "workspace:*",
+    "@repo/checkbox-group": "workspace:*",
     "@repo/contextual-save-bar": "workspace:*",
     "@repo/page": "workspace:*",
     "@repo/shadcn-ui": "workspace:*",

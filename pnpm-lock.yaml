@@ -59,6 +59,9 @@ importers:
       '@repo/badge':
         specifier: workspace:*
         version: link:../../packages/badge
+      '@repo/checkbox-group':
+        specifier: workspace:*
+        version: link:../../packages/checkbox-group
       '@repo/contextual-save-bar':
         specifier: workspace:*
         version: link:../../packages/contextual-save-bar
@@ -144,31 +147,6 @@ importers:
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
-      react:
-        specifier: ^19.2.3
-        version: 19.2.3
-      react-dom:
-        specifier: ^19.2.3
-        version: 19.2.3(react@19.2.3)
-    devDependencies:
-      '@repo/tsconfig':
-        specifier: workspace:*
-        version: link:../tsconfig
-      '@types/react':
-        specifier: ^19.2.8
-        version: 19.2.8
-      '@types/react-dom':
-        specifier: ^19.2.3
-        version: 19.2.3(@types/react@19.2.8)
-      typescript:
-        specifier: ^5.9.3
-        version: 5.9.3
-
-  packages/checkbox-field:
-    dependencies:
-      '@repo/shadcn-ui':
-        specifier: workspace:*
-        version: link:../shadcn-ui
       react:
         specifier: ^19.2.3
         version: 19.2.3
