@@ -3,20 +3,57 @@ title: Get Started
 description: Welcome to Sylph UI! This guide will help you set up and start using our components in your project.
 ---
 
-## Quick Start
+## Introduction
 
-Sylph UI is a trusted registry for shadcn/ui. You can start adding components right away!
+Sylph UI is a component library built on top of [shadcn/ui](https://ui.shadcn.com) and [Base UI](https://base-ui.com). It provides accessible, customizable components that extend the shadcn/ui ecosystem with additional functionality powered by Base UI primitives.
 
+## Installation
+
+### New Projects
+
+Create a new project with Base UI support using the shadcn/ui CLI:
+
+```bash
+pnpm dlx shadcn@latest init --base base
 ```
-pnpm dlx shadcn@latest add @sylph-ui/button
+
+Or visit [ui.shadcn.com/create?base=base](https://ui.shadcn.com/create?base=base) to create a new project interactively.
+
+### Existing Projects
+
+If you have an existing shadcn/ui project, update your `components.json` to use Base UI:
+
+```json
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "base-nova"
+}
 ```
 
-This will add the Sylph UI registry to your components.json:
+## Adding Components
 
+Sylph UI is a trusted registry for shadcn/ui. Add components using the CLI:
+
+```bash
+pnpm dlx shadcn@latest add @sylph-ui/badge
 ```
+
+This will automatically add the Sylph UI registry to your `components.json`:
+
+```json
 {
   "registries": {
     "@sylph-ui": "https://sylph-ui.vercel.app/r/{name}.json"
   }
 }
 ```
+
+## Why Base UI?
+
+The `base-nova` style uses [Base UI](https://base-ui.com) as the underlying component library, providing:
+
+- **Better Accessibility** - Built with ARIA best practices from the ground up
+- **Flexible APIs** - More control over component behavior and styling
+- **Modern Architecture** - Designed for React 18+ with concurrent features support
+
+For more information, visit the [Base UI documentation](https://base-ui.com).
