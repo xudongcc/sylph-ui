@@ -73,25 +73,7 @@ The root component that manages the state of the code block.
 
 <AutoTypeTable
   path="../../packages/code-block/index.tsx"
-  name="CodeBlockProps"
-/>
-
-### CodeBlockHeaderProps
-
-Container for the header section with filename and copy button.
-
-<AutoTypeTable
-  path="../../packages/code-block/index.tsx"
-  name="CodeBlockHeaderProps"
-/>
-
-### CodeBlockBodyProps
-
-Container for the code content area.
-
-<AutoTypeTable
-  path="../../packages/code-block/index.tsx"
-  name="CodeBlockBodyProps"
+  type={`Pick<CodeBlockProps, 'data' | 'defaultValue' | 'value' | 'onValueChange' | 'className'>`}
 />
 
 ### CodeBlockItemProps
@@ -100,7 +82,7 @@ Wrapper for individual code file content.
 
 <AutoTypeTable
   path="../../packages/code-block/index.tsx"
-  name="CodeBlockItemProps"
+  type={`Pick<CodeBlockItemProps, 'value' | 'lineNumbers' | 'className'>`}
 />
 
 ### CodeBlockContentProps
@@ -109,7 +91,7 @@ The syntax-highlighted code content.
 
 <AutoTypeTable
   path="../../packages/code-block/index.tsx"
-  name="CodeBlockContentProps"
+  type={`Pick<CodeBlockContentProps, 'language' | 'syntaxHighlighting' | 'children'>`}
 />
 
 ### CodeBlockCopyButtonProps
@@ -118,5 +100,5 @@ Button to copy code to clipboard.
 
 <AutoTypeTable
   path="../../packages/code-block/index.tsx"
-  name="CodeBlockCopyButtonProps"
+  type={`Pick<CodeBlockCopyButtonProps, 'onCopy' | 'onError' | 'timeout' | 'className'>`}
 />
