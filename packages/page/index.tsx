@@ -72,12 +72,14 @@ export const Page: FC<PageProps> = ({
           {/* Mobile: Show secondary actions in dropdown menu */}
           {hasSecondaryActions && (
             <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button className="md:hidden" size="icon" variant="outline">
-                  <MoreHorizontal className="size-4" />
-                  <span className="sr-only">More actions</span>
-                </Button>
-              </DropdownMenuTrigger>
+              <DropdownMenuTrigger
+                render={
+                  <Button className="md:hidden" size="icon" variant="outline">
+                    <MoreHorizontal className="size-4" />
+                    <span className="sr-only">More actions</span>
+                  </Button>
+                }
+              />
               <DropdownMenuContent align="end">
                 {secondaryActions.map((action, index) => (
                   <DropdownMenuItem

@@ -1,6 +1,5 @@
 "use client";
 
-// import { SiReact } from "@icons-pack/react-simple-icons";
 import {
   type BundledLanguage,
   CodeBlock,
@@ -8,13 +7,14 @@ import {
   CodeBlockContent,
   CodeBlockCopyButton,
   CodeBlockItem,
-} from "@repo/shadcn-ui/components/kibo-ui/code-block";
+} from "@repo/code-block";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@repo/shadcn-ui/components/ui/accordion";
+import { SiReact } from "react-icons/si";
 
 interface PreviewSourceProps {
   source: { name: string; source: string }[];
@@ -24,12 +24,12 @@ const parseCode = (code: string) =>
   code.replace(/@ui\/shadcn-ui\//g, "@/").replace(/@ui\//g, "@/components/ui/");
 
 export const PreviewSource = ({ source }: PreviewSourceProps) => (
-  <Accordion collapsible defaultValue={source.at(0)?.name} type="single">
+  <Accordion defaultValue={[source.at(0)?.name]}>
     {source.map(({ name, source }) => (
       <AccordionItem key={name} value={name}>
         <AccordionTrigger className="bg-secondary rounded-none px-4">
           <div className="flex items-center gap-2 text-sm">
-            {/* <SiReact className="size-4 text-muted-foreground" /> */}
+            <SiReact className="text-muted-foreground size-4" />
             <span>{name}</span>
           </div>
         </AccordionTrigger>

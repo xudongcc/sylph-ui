@@ -8,7 +8,7 @@ import {
   CodeBlockCopyButton,
   CodeBlockItem,
   type CodeBlockProps,
-} from "@repo/shadcn-ui/components/kibo-ui/code-block";
+} from "@repo/code-block";
 
 interface PreviewCodeProps {
   code: string;

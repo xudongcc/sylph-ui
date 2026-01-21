@@ -9,19 +9,8 @@ import {
   transformerNotationWordHighlight,
 } from "@shikijs/transformers";
 import { CheckIcon, CopyIcon } from "lucide-react";
-import type {
-  ComponentProps,
-  HTMLAttributes,
-  ReactElement,
-  ReactNode,
-} from "react";
-import {
-  cloneElement,
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import type { ComponentProps, HTMLAttributes, ReactNode } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import type { IconType } from "react-icons";
 import {
   SiAstro,
@@ -98,6 +87,7 @@ import {
   type CodeOptionsMultipleThemes,
   codeToHtml,
 } from "shiki";
+
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -386,7 +376,7 @@ export type CodeBlockFilenameProps = HTMLAttributes<HTMLDivElement> & {
 };
 
 export const CodeBlockFilename = ({
-  className,
+  className: _className,
   icon,
   value,
   children,
@@ -421,7 +411,17 @@ export type CodeBlockSelectProps = ComponentProps<typeof Select>;
 export const CodeBlockSelect = (props: CodeBlockSelectProps) => {
   const { value, onValueChange } = useContext(CodeBlockContext);
 
-  return <Select onValueChange={onValueChange} value={value} {...props} />;
+  return (
+    <Select
+      value={value}
+      onValueChange={(value) => {
+        if (typeof value === "string") {
+          onValueChange?.(value);
+        }
+      }}
+      {...props}
+    />
+  );
 };
 
 export type CodeBlockSelectTriggerProps = ComponentProps<typeof SelectTrigger>;
@@ -477,7 +477,6 @@ export type CodeBlockCopyButtonProps = ComponentProps<typeof Button> & {
 };
 
 export const CodeBlockCopyButton = ({
-  asChild,
   onCopy,
   onError,
   timeout = 2000,
@@ -506,21 +505,14 @@ export const CodeBlockCopyButton = ({
     }, onError);
   };
 
-  if (asChild) {
-    return cloneElement(children as ReactElement, {
-      // @ts-expect-error - we know this is a button
-      onClick: copyToClipboard,
-    });
-  }
-
   const Icon = isCopied ? CheckIcon : CopyIcon;
 
   return (
     <Button
       className={cn("shrink-0", className)}
-      onClick={copyToClipboard}
       size="icon"
       variant="ghost"
+      onClick={copyToClipboard}
       {...props}
     >
       {children ?? <Icon className="text-muted-foreground" size={14} />}
@@ -538,7 +530,7 @@ const CodeBlockFallback = ({ children, ...props }: CodeBlockFallbackProps) => (
           ?.toString()
           .split("\n")
           .map((line, i) => (
-            <span className="line" key={i}>
+            <span key={i} className="line">
               {line}
             </span>
           ))}
@@ -620,7 +612,6 @@ export const CodeBlockContent = ({
 
     highlight(children as string, language, themes)
       .then(setHtml)
-      // biome-ignore lint/suspicious/noConsole: "it's fine"
       .catch(console.error);
   }, [children, themes, syntaxHighlighting, language]);
 
@@ -628,11 +619,5 @@ export const CodeBlockContent = ({
     return <CodeBlockFallback>{children}</CodeBlockFallback>;
   }
 
-  return (
-    <div
-      // biome-ignore lint/security/noDangerouslySetInnerHtml: "Kinda how Shiki works"
-      dangerouslySetInnerHTML={{ __html: html }}
-      {...props}
-    />
-  );
+  return <div dangerouslySetInnerHTML={{ __html: html }} {...props} />;
 };
