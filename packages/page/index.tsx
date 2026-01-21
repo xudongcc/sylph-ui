@@ -24,7 +24,7 @@ export interface PageProps {
   title: ReactNode;
   description?: ReactNode;
   primaryAction?: PageActionProps;
-  secondaryActions?: PageActionProps[];
+  secondaryActions?: Array<PageActionProps>;
   fullWidth?: boolean;
 }
 
@@ -45,17 +45,17 @@ export const Page: FC<PageProps> = ({
         fullWidth && "max-w-full",
       )}
     >
-      <header className="mb-4 flex items-center justify-between gap-2">
-        <div>
-          <h2 className="flex h-9 items-center text-xl font-bold tracking-tight">
+      <header className="flex justify-between gap-2 pb-4">
+        <div className="flex flex-col gap-1">
+          <h2 className="text-xl font-semibold tracking-tight md:text-2xl">
             {title}
           </h2>
           {description && (
-            <p className="text-muted-foreground text-xs">{description}</p>
+            <p className="text-muted-foreground text-sm">{description}</p>
           )}
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex gap-2">
           {/* Desktop: Show secondary action buttons */}
           {secondaryActions?.map((action, index) => (
             <Button
@@ -80,6 +80,7 @@ export const Page: FC<PageProps> = ({
                   </Button>
                 }
               />
+
               <DropdownMenuContent align="end">
                 {secondaryActions.map((action, index) => (
                   <DropdownMenuItem
