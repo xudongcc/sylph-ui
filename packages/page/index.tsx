@@ -47,9 +47,7 @@ export const Page: FC<PageProps> = ({
     >
       <header className="flex justify-between gap-2 pb-4">
         <div className="flex flex-col gap-1">
-          <h2 className="text-xl font-semibold tracking-tight md:text-2xl">
-            {title}
-          </h2>
+          <h2 className="text-xl font-semibold tracking-tight">{title}</h2>
           {description && (
             <p className="text-muted-foreground text-sm">{description}</p>
           )}
