@@ -14,12 +14,23 @@ pnpm dlx shadcn@latest add @sylph-ui/page
 ## Usage
 
 ```tsx
-import { Page } from "@/components/sylph-ui/page";
+import {
+  Page,
+  PageAction,
+  PageContent,
+  PageDescription,
+  PageHeader,
+  PageTitle,
+} from "@repo/page";
 ```
 
 ```tsx
-<Page title="Products" description="Manage your products and inventory.">
-  {/* Page content */}
+<Page>
+  <PageHeader>
+    <PageTitle>Products</PageTitle>
+    <PageDescription>Manage your products and inventory.</PageDescription>
+  </PageHeader>
+  <PageContent>{/* Page content */}</PageContent>
 </Page>
 ```
 
@@ -27,22 +38,68 @@ import { Page } from "@/components/sylph-ui/page";
 
 ### With Actions
 
-Use `primaryAction` and `secondaryActions` to add action buttons to the page header.
+Use `PageAction` with `Button` to add action buttons to the page header.
 
 <Preview path="page-with-actions" />
 
 ### Full Width
 
-Use the `fullWidth` prop to remove the default max-width constraint.
+Use the `variant="full"` prop to remove the default max-width constraint.
 
 <Preview path="page-full-width" />
 
 ## API Reference
 
-### PageProps
+### Page
 
-<AutoTypeTable path="../../packages/page/index.tsx" name="PageProps" />
+The root container component.
 
-### PageActionProps
+<AutoTypeTable
+  path="../../packages/page/index.tsx"
+  type="Pick<PageProps, 'variant' | 'className'>"
+/>
 
-<AutoTypeTable path="../../packages/page/index.tsx" name="PageActionProps" />
+### PageHeader
+
+The header section containing title, description, and actions.
+
+<AutoTypeTable
+  path="../../packages/page/index.tsx"
+  type="Pick<PageHeaderProps, 'className'>"
+/>
+
+### PageTitle
+
+The page title component.
+
+<AutoTypeTable
+  path="../../packages/page/index.tsx"
+  type="Pick<PageTitleProps, 'className'>"
+/>
+
+### PageDescription
+
+The page description component.
+
+<AutoTypeTable
+  path="../../packages/page/index.tsx"
+  type="Pick<PageDescriptionProps, 'className'>"
+/>
+
+### PageAction
+
+Container for action buttons.
+
+<AutoTypeTable
+  path="../../packages/page/index.tsx"
+  type="Pick<PageActionProps, 'className'>"
+/>
+
+### PageContent
+
+The main content area.
+
+<AutoTypeTable
+  path="../../packages/page/index.tsx"
+  type="Pick<PageContentProps, 'className'>"
+/>

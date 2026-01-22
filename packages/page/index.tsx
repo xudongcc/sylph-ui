@@ -1,124 +1,95 @@
 "use client";
 
-import { MoreHorizontal } from "lucide-react";
 import { cva } from "class-variance-authority";
 import type { VariantProps } from "class-variance-authority";
-import type { FC, Key, ReactNode } from "react";
+import type { ComponentProps, FC } from "react";
 
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 
-const pageVariants = cva("mx-auto flex min-h-min w-full flex-1 flex-col p-4", {
-  variants: {
-    variant: {
-      full: "w-full",
-      default: "max-w-5xl",
-      compact: "max-w-xl",
+const pageVariants = cva(
+  "mx-auto flex min-h-min w-full flex-1 flex-col p-4 @container/page",
+  {
+    variants: {
+      variant: {
+        full: "w-full",
+        default: "max-w-5xl",
+        compact: "max-w-xl",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
     },
   },
-  defaultVariants: {
-    variant: "default",
-  },
-});
+);
 
-export interface PageActionProps {
-  key?: Key;
-  disabled?: boolean;
-  content: ReactNode;
-  onAction?: () => Promise<void> | void;
-}
+export type PageProps = ComponentProps<"div"> &
+  VariantProps<typeof pageVariants>;
 
-export interface PageProps extends VariantProps<typeof pageVariants> {
-  className?: string;
-  children: ReactNode;
-  title: ReactNode;
-  description?: ReactNode;
-  primaryAction?: PageActionProps;
-  secondaryActions?: Array<PageActionProps>;
-  fullWidth?: boolean;
-}
+export const Page: FC<PageProps> = ({ className, variant, ...props }) => {
+  return (
+    <div className={cn(pageVariants({ variant }), className)} {...props} />
+  );
+};
 
-export const Page: FC<PageProps> = ({
+export type PageHeaderProps = ComponentProps<"header">;
+
+export const PageHeader: FC<PageHeaderProps> = ({ className, ...props }) => {
+  return (
+    <header
+      data-slot="page-header"
+      className={cn(
+        "grid gap-1 pb-4 has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto]",
+        className,
+      )}
+      {...props}
+    />
+  );
+};
+
+export type PageTitleProps = ComponentProps<"h2">;
+
+export const PageTitle: FC<PageTitleProps> = ({ className, ...props }) => {
+  return (
+    <h2
+      className={cn("text-xl font-semibold tracking-tight", className)}
+      data-slot="page-title"
+      {...props}
+    />
+  );
+};
+
+export type PageDescriptionProps = ComponentProps<"p">;
+
+export const PageDescription: FC<PageDescriptionProps> = ({
   className,
-  children,
-  title,
-  description,
-  primaryAction,
-  secondaryActions,
   ...props
 }) => {
-  const hasSecondaryActions = secondaryActions && secondaryActions.length > 0;
-
   return (
-    <div className={cn(pageVariants(props), className)}>
-      <header className="flex justify-between gap-2 pb-4">
-        <div className="flex flex-col gap-1">
-          <h2 className="text-xl font-semibold tracking-tight">{title}</h2>
-          {description && (
-            <p className="text-muted-foreground text-sm">{description}</p>
-          )}
-        </div>
-
-        <div className="flex gap-2">
-          {/* Desktop: Show secondary action buttons */}
-          {secondaryActions?.map((action, index) => (
-            <Button
-              key={action.key ?? index}
-              className="hidden md:inline-flex"
-              disabled={action.disabled}
-              variant="outline"
-              onClick={action.onAction}
-            >
-              {action.content}
-            </Button>
-          ))}
-
-          {/* Mobile: Show secondary actions in dropdown menu */}
-          {hasSecondaryActions && (
-            <DropdownMenu>
-              <DropdownMenuTrigger
-                render={
-                  <Button className="md:hidden" size="icon" variant="outline">
-                    <MoreHorizontal className="size-4" />
-                    <span className="sr-only">More actions</span>
-                  </Button>
-                }
-              />
-
-              <DropdownMenuContent align="end">
-                {secondaryActions.map((action, index) => (
-                  <DropdownMenuItem
-                    key={action.key ?? index}
-                    disabled={action.disabled}
-                    onClick={action.onAction}
-                  >
-                    {action.content}
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
-          )}
-
-          {/* Primary action: Always visible */}
-          {primaryAction && (
-            <Button
-              disabled={primaryAction.disabled}
-              variant="default"
-              onClick={primaryAction.onAction}
-            >
-              {primaryAction.content}
-            </Button>
-          )}
-        </div>
-      </header>
-
-      <div className="flex-1">{children}</div>
-    </div>
+    <p
+      className={cn("text-muted-foreground text-sm", className)}
+      data-slot="page-description"
+      {...props}
+    />
   );
+};
+
+export type PageActionProps = ComponentProps<"div">;
+
+export const PageAction: FC<PageActionProps> = ({ className, ...props }) => {
+  return (
+    <div
+      data-slot="page-action"
+      className={cn(
+        "col-start-2 row-span-2 row-start-1 self-start justify-self-end",
+        className,
+      )}
+      {...props}
+    />
+  );
+};
+
+export type PageContentProps = ComponentProps<"div">;
+
+export const PageContent: FC<PageContentProps> = ({ className, ...props }) => {
+  return <div className={cn("flex-1", className)} {...props} />;
 };

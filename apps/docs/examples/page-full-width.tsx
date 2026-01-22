@@ -1,12 +1,22 @@
-import { Page } from "@repo/page";
+import {
+  Page,
+  PageContent,
+  PageDescription,
+  PageHeader,
+  PageTitle,
+} from "@repo/page";
 
 const Example = () => (
-  <Page
-    fullWidth
-    description="This page uses the full width of the container."
-    title="Dashboard"
-  >
-    <p className="text-muted-foreground">Your page content goes here.</p>
+  <Page variant="full">
+    <PageHeader>
+      <PageTitle>Dashboard</PageTitle>
+      <PageDescription>
+        This page uses the full width of the container.
+      </PageDescription>
+    </PageHeader>
+    <PageContent>
+      <p className="text-muted-foreground">Your page content goes here.</p>
+    </PageContent>
   </Page>
 );
 
