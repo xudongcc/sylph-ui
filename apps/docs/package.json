@@ -16,6 +16,7 @@
     "@repo/badge": "workspace:*",
     "@repo/checkbox-group": "workspace:*",
     "@repo/contextual-save-bar": "workspace:*",
+    "@repo/data-table": "workspace:*",
     "@repo/page": "workspace:*",
     "@repo/shadcn-ui": "workspace:*",
     "@tanstack/react-form": "^1.27.7",
