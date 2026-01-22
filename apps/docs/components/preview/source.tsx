@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  type BundledLanguage,
   CodeBlock,
   CodeBlockBody,
   CodeBlockContent,
@@ -15,6 +14,7 @@ import {
   AccordionTrigger,
 } from "@repo/shadcn-ui/components/ui/accordion";
 import { SiReact } from "react-icons/si";
+import type { BundledLanguage } from "@repo/code-block";
 
 interface PreviewSourceProps {
   source: { name: string; source: string }[];

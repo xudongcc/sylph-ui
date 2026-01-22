@@ -5,8 +5,8 @@ import {
   DocsTitle,
 } from "fumadocs-ui/layouts/docs/page";
 import { createRelativeLink } from "fumadocs-ui/mdx";
-import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 
 import { LLMCopyButton, ViewOptions } from "~/components/ai/page-actions";
 import { Preview } from "~/components/preview";

@@ -7,13 +7,13 @@ import {
   CodeBlockCopyButton,
   CodeBlockHeader,
   CodeBlockItem,
-  type CodeBlockProps,
   CodeBlockSelect,
   CodeBlockSelectContent,
   CodeBlockSelectItem,
   CodeBlockSelectTrigger,
   CodeBlockSelectValue,
 } from "@repo/code-block";
+import type { CodeBlockProps } from "@repo/code-block";
 
 const tsCode = `interface User {
   id: string;

@@ -1,11 +1,11 @@
+import { dirname } from "path";
+import { fileURLToPath } from "url";
 import { FlatCompat } from "@eslint/eslintrc";
 import js from "@eslint/js";
+import importPlugin from "eslint-plugin-import";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
-import simpleImportSort from "eslint-plugin-simple-import-sort";
-import { dirname } from "path";
 import tseslint from "typescript-eslint";
-import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -14,6 +14,36 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
+/** @type {import('eslint').Linter.Config['rules']} */
+const importRules = {
+  "sort-imports": ["error", { ignoreDeclarationSort: true }],
+  "@typescript-eslint/consistent-type-imports": [
+    "error",
+    { prefer: "type-imports" },
+  ],
+  "import/consistent-type-specifier-style": ["error", "prefer-top-level"],
+  "import/first": "error",
+  "import/newline-after-import": "error",
+  "import/no-commonjs": "error",
+  "import/no-duplicates": "error",
+  "import/order": [
+    "error",
+    {
+      groups: [
+        "builtin",
+        "external",
+        "internal",
+        "parent",
+        "sibling",
+        "index",
+        "object",
+        "type",
+      ],
+    },
+  ],
+};
+
+/** @type {import('eslint').Linter.Config[]} */
 const eslintConfig = [
   {
     ignores: [
@@ -38,16 +68,15 @@ const eslintConfig = [
   reactHooks.configs.flat.recommended,
   {
     plugins: {
-      "simple-import-sort": simpleImportSort,
+      import: importPlugin,
     },
     rules: {
+      ...importRules,
       "@next/next/no-html-link-for-pages": "off",
       "@typescript-eslint/no-unused-vars": [
         "warn",
         { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
       ],
-      "simple-import-sort/imports": "error",
-      "simple-import-sort/exports": "error",
       "react/jsx-sort-props": [
         "error",
         {
@@ -57,7 +86,7 @@ const eslintConfig = [
           reservedFirst: true,
           noSortAlphabetically: false,
           multiline: "last",
-        }
+        },
       ],
     },
     settings: {

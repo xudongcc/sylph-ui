@@ -7,8 +7,8 @@ import {
   CodeBlockCopyButton,
   CodeBlockHeader,
   CodeBlockItem,
-  type CodeBlockProps,
 } from "@repo/code-block";
+import type { CodeBlockProps } from "@repo/code-block";
 
 const code = `import { Button } from "@/components/ui/button";
 

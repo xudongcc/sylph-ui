@@ -1,14 +1,13 @@
 "use client";
 
 import {
-  type BundledLanguage,
   CodeBlock,
   CodeBlockBody,
   CodeBlockContent,
   CodeBlockCopyButton,
   CodeBlockItem,
-  type CodeBlockProps,
 } from "@repo/code-block";
+import type { BundledLanguage, CodeBlockProps } from "@repo/code-block";
 
 interface PreviewCodeProps {
   code: string;

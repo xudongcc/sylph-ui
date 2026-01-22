@@ -9,9 +9,7 @@ import {
   transformerNotationWordHighlight,
 } from "@shikijs/transformers";
 import { CheckIcon, CopyIcon } from "lucide-react";
-import type { ComponentProps, HTMLAttributes, ReactNode } from "react";
 import { createContext, useContext, useEffect, useState } from "react";
-import type { IconType } from "react-icons";
 import {
   SiAstro,
   SiBiome,
@@ -82,11 +80,10 @@ import {
   SiVuedotjs,
   SiWebassembly,
 } from "react-icons/si";
-import {
-  type BundledLanguage,
-  type CodeOptionsMultipleThemes,
-  codeToHtml,
-} from "shiki";
+import { codeToHtml } from "shiki";
+import type { BundledLanguage, CodeOptionsMultipleThemes } from "shiki";
+import type { IconType } from "react-icons";
+import type { ComponentProps, HTMLAttributes, ReactNode } from "react";
 
 import { Button } from "@/components/ui/button";
 import {

@@ -1,10 +1,10 @@
 "use client";
 
-import { ComponentProps, FC } from "react";
+import type { ComponentProps, FC } from "react";
 
 import {
-  Dialog as DialogComponent,
   DialogClose as DialogCloseComponent,
+  Dialog as DialogComponent,
   DialogContent as DialogContentComponent,
   DialogDescription as DialogDescriptionComponent,
   DialogFooter as DialogFooterComponent,
@@ -13,8 +13,8 @@ import {
   DialogTrigger as DialogTriggerComponent,
 } from "@/components/ui/dialog";
 import {
-  Drawer as DrawerComponent,
   DrawerClose as DrawerCloseComponent,
+  Drawer as DrawerComponent,
   DrawerContent as DrawerContentComponent,
   DrawerDescription as DrawerDescriptionComponent,
   DrawerFooter as DrawerFooterComponent,

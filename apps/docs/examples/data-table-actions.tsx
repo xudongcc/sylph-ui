@@ -1,6 +1,7 @@
 "use client";
 
-import { DataTable, type DataTableColumnProps } from "@repo/data-table";
+import { DataTable } from "@repo/data-table";
+import type { DataTableColumnProps } from "@repo/data-table";
 
 interface User {
   id: string;

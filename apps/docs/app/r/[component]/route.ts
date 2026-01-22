@@ -3,9 +3,9 @@ import { join } from "node:path";
 
 import { track } from "@vercel/analytics/server";
 import { notFound } from "next/navigation";
-import { type NextRequest, NextResponse } from "next/server";
-
+import { NextResponse } from "next/server";
 import { getPackage } from "../../../lib/package";
+import type { NextRequest } from "next/server";
 
 interface RegistryParams {
   params: Promise<{ component: string }>;

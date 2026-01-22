@@ -1,13 +1,5 @@
 "use client";
 
-import type {
-  Column,
-  ColumnDef,
-  Row,
-  RowData,
-  RowSelectionState,
-  TableOptions,
-} from "@tanstack/react-table";
 import {
   flexRender,
   getCoreRowModel,
@@ -19,8 +11,16 @@ import {
   ChevronRight,
   MoreHorizontal,
 } from "lucide-react";
-import type { CSSProperties, Key, ReactNode } from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import type {
+  Column,
+  ColumnDef,
+  Row,
+  RowData,
+  RowSelectionState,
+  TableOptions,
+} from "@tanstack/react-table";
+import type { CSSProperties, Key, ReactNode } from "react";
 
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
