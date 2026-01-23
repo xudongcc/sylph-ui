@@ -65,6 +65,9 @@ importers:
       '@repo/badge':
         specifier: workspace:*
         version: link:../../packages/badge
+      '@repo/button':
+        specifier: workspace:*
+        version: link:../../packages/button
       '@repo/checkbox-group':
         specifier: workspace:*
         version: link:../../packages/checkbox-group
@@ -159,6 +162,34 @@ importers:
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
+      react:
+        specifier: ^19.2.3
+        version: 19.2.3
+      react-dom:
+        specifier: ^19.2.3
+        version: 19.2.3(react@19.2.3)
+    devDependencies:
+      '@repo/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+      '@types/react':
+        specifier: ^19.2.8
+        version: 19.2.8
+      '@types/react-dom':
+        specifier: ^19.2.3
+        version: 19.2.3(@types/react@19.2.8)
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
+  packages/button:
+    dependencies:
+      '@repo/shadcn-ui':
+        specifier: workspace:*
+        version: link:../shadcn-ui
+      lucide-react:
+        specifier: ^0.562.0
+        version: 0.562.0(react@19.2.3)
       react:
         specifier: ^19.2.3
         version: 19.2.3
